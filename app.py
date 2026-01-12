@@ -169,11 +169,12 @@ if st.button("Calculate using IS-456"):
 if st.button("Predict using Weighted Neural Network"):
     features = [
         fck, fy, b, D, L,
-        1 if load_type == "Point Load" else 2,
         main_dia, main_count,
         stirrup_dia, spacing
     ]
 
+
     nn_value = nn_predict(features)
     st.success(f"NN Predicted NET Capacity: {nn_value:.2f} kN")
+
 
