@@ -10,6 +10,8 @@ import joblib
 model = tf.keras.models.load_model("beam_weighted_model.keras")
 scaler = joblib.load("scaler.save")
 
+st.write("Scaler expects features:", scaler.n_features_in_)
+
 def nn_predict(features):
     features_scaled = scaler.transform([features])
     return model.predict(features_scaled)[0][0]
@@ -174,3 +176,4 @@ if st.button("Predict using Weighted Neural Network"):
 
     nn_value = nn_predict(features)
     st.success(f"NN Predicted NET Capacity: {nn_value:.2f} kN")
+
